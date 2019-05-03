@@ -134,7 +134,7 @@ Namespace Contensive.Addon.PageNavigation2
                         & "And((dateexpires is null)or(dateexpires>" & SQLNow & "))" _
                         & ""
                     If CriteriaString <> "" Then
-                        If cs.Open(ContentNamePageContent, CriteriaString & " AND (" & SecondTest & " )", SortCriteria, , "ID, Name,MenuHeadline") Then
+                        If cs.Open(ContentNamePageContent, CriteriaString & " AND (" & SecondTest & " )", SortCriteria, True, "ID, Name,MenuHeadline") Then
                             Do
                                 childPageList = ""
                                 CurrentRecordID = cs.GetInteger("ID")
@@ -208,12 +208,12 @@ Namespace Contensive.Addon.PageNavigation2
                 Dim ChildListSortMethodID As Integer
                 Dim cs As CPCSBaseClass = cp.CSNew()
                 '
-                If cs.Open(ContentName, "ID=" & cp.Db.EncodeSQLNumber(RecordID), , , "ChildListSortMethodID") Then
+                If cs.Open(ContentName, "ID=" & cp.Db.EncodeSQLNumber(RecordID), "", True, "ChildListSortMethodID") Then
                     ChildListSortMethodID = cs.GetInteger("ChildListSortMethodID")
                 End If
                 Call cs.Close()
                 '
-                If cs.Open("Sort Methods", "ID=" & cp.Db.EncodeSQLNumber(ChildListSortMethodID), , , "OrderByClause") Then
+                If cs.Open("Sort Methods", "ID=" & cp.Db.EncodeSQLNumber(ChildListSortMethodID), "", True, "OrderByClause") Then
                     GetChildPageListSortMethod = cs.GetText("OrderByClause")
                 End If
                 Call cs.Close()

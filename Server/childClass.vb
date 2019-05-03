@@ -9,7 +9,7 @@ Namespace Contensive.Addon.PageNavigation2
     '
     ' Sample Vb addon
     '
-    Public Class childClass
+    Public Class ChildClass
         Inherits AddonBaseClass
         '
         ' - Create a Contensive Addon record, set the dotnet class full name to yourNameSpaceName.yourClassName
